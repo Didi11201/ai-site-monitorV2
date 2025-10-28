@@ -1,9 +1,13 @@
-# config.yml - list your target sites and parameters
+# === Gemini API 配置 ===
+gemini_api_key: "在这里填写你的_Gemini_API_KEY"
+
+# === 要监控的网站 ===
 sites:
   - url: "https://www.newbalance.com"
   - url: "https://us.puma.com"
   - url: "https://chefrubber.com"
 
+# === 关键词列表 ===
 keywords:
   - "sale"
   - "promo"
@@ -13,6 +17,7 @@ keywords:
   - "gift"
   - "clearance"
 
+# === 运行参数 ===
 batch_size: 50
 max_pages_per_site: 8
 text_limit: 2000
@@ -20,3 +25,7 @@ timeout: 15
 max_concurrent: 10
 retry_count: 2
 gemini_model: "gemini-1.5-flash"
+
+# === 输出设置 ===
+output_dir: "results"
+output_format: ["json", "csv"]
