@@ -31,7 +31,8 @@ if not API_KEY:
 
 try:
     genai.configure(api_key=API_KEY)
-    model = genai.GenerativeModel(config.get("gemini_model", "gemini-1.5-flash"))
+    model_name = config.get("gemini_model", "gemini-1.5-flash")
+    model = genai.GenerativeModel(model_name)
     test_response = model.generate_content("Say hi if Gemini is working.")
     print("✅ Gemini API 正常连接，测试回复:", test_response.text[:100])
 except Exception as e:
@@ -42,7 +43,7 @@ except Exception as e:
 async def fetch_site(session, url, timeout):
     try:
         async with session.get(url, timeout=timeout) as resp:
-            text = await resp.text()
+            text = await resp.text(errors="ignore")
             return text[:config["text_limit"]]
     except Exception as e:
         print(f"⚠️ {url} 访问失败: {e}")
@@ -54,17 +55,17 @@ async def analyze_site(model, url, html, keywords):
         return False, []
 
     prompt = f"""
-你是一位网站促销内容检测助手。
-以下是网站 HTML 内容，请判断是否包含以下关键词（不区分大小写）：
+你是一位网站促销检测助手。请分析以下 HTML 内容是否包含以下关键词（不区分大小写）：
 {keywords}
 
-HTML:
+HTML 内容：
 {html[:2000]}
 """
 
     try:
-        response = model.generate_content(prompt)
-        text = response.text.lower()
+        # ✅ 使用新版 SDK 写法
+        response = await asyncio.to_thread(model.generate_content, prompt)
+        text = (response.text or "").lower()
         found = [kw for kw in keywords if kw.lower() in text]
         return bool(found), found
     except Exception as e:
