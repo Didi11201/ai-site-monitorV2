@@ -10,12 +10,10 @@ sites:
 # === 关键词列表 ===
 keywords:
   - "sale"
-  - "promo"
   - "discount"
-  - "offer"
-  - "deal"
   - "gift"
-  - "clearance"
+  - "free"
+  - "reward"
 
 # === 运行参数 ===
 batch_size: 50
