@@ -1,0 +1,22 @@
+# config.yml - list your target sites and parameters
+sites:
+  - url: "https://www.newbalance.com"
+  - url: "https://us.puma.com"
+  - url: "https://chefrubber.com"
+
+keywords:
+  - "sale"
+  - "promo"
+  - "discount"
+  - "offer"
+  - "deal"
+  - "gift"
+  - "clearance"
+
+batch_size: 50
+max_pages_per_site: 8
+text_limit: 2000
+timeout: 15
+max_concurrent: 10
+retry_count: 2
+gemini_model: "gemini-1.5-flash"

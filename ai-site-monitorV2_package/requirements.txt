@@ -1,0 +1,5 @@
+aiohttp
+beautifulsoup4
+pyyaml
+python-dotenv
+google-generativeai
