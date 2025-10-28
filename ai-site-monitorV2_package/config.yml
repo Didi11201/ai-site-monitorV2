@@ -6,6 +6,7 @@ sites:
   - url: "https://www.newbalance.com"
   - url: "https://us.puma.com"
   - url: "https://chefrubber.com"
+  - url: "https://example.com"
 
 # === 关键词列表 ===
 keywords:
@@ -14,6 +15,7 @@ keywords:
   - "gift"
   - "free"
   - "reward"
+  - "example"
 
 # === 运行参数 ===
 batch_size: 50
